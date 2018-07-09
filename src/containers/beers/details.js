@@ -15,21 +15,24 @@ class BeerDetails extends Component {
   }
   render() {
     const beer = this.props.beerDetails[0] || ''
+    const isLoading = this.props.isLoading
     return (
       <div>
-        <div key={beer.id}>
+        {isLoading ? (<div>Carregando...</div>) : (<div key={beer.id}>
           <div>
             <strong>{beer.name}</strong>
             <span>{beer.tagline}</span>
           </div>
-        </div>
+        </div>)}
       </div>
     );
   }
 }
 
 const mapStateToProps = ({ beers }) => ({
-  beerDetails: beers.beerDetails
+  beerDetails: beers.beerDetails,
+  isLoading: beers.isLoading,
+  errorMessage: beers.errorMessage
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

@@ -13,7 +13,8 @@ const ROOT_URL = "https://api.punkapi.com/v2/";
 const initialState = {
   beersList: [],
   beerDetails: {},
-  isLoading: true
+  isLoading: true,
+  errorMessage: ''
 }
 
 // Reducers
@@ -23,19 +24,20 @@ export default (state = initialState, action) => {
       return {
         ...state,
         beersList: action.payload.data,
-        isLoading: !state.isLoading
+        isLoading: false
       }
 
     case FETCH_BEER_DETAILS:
       return {
         ...state,
         beerDetails: action.payload,
-        isLoading: !state.isLoading
+        isLoading: false
       }
 
     case FETCH_BEERS_FAILED:
       return {
         ...state,
+        errorMessage: action.payload,
         isLoading: true
       }
 
@@ -57,7 +59,7 @@ export const fetchBeers = () => {
        }))
       .catch(error => dispatch({
         type: FETCH_BEERS_FAILED, 
-        payload: error
+        payload: error.message
       }))
   }
 }
@@ -72,7 +74,7 @@ export const fetchBeerDetails = (id) => {
        }))
       .catch(error => dispatch({
         type: FETCH_BEERS_FAILED, 
-        payload: error
+        payload: error.message
       }))
   }
 }
