@@ -3,7 +3,8 @@ import axios from "axios"
 import {
   FETCH_BEERS,
   FETCH_BEER_DETAILS,
-  FETCH_BEERS_FAILED
+  FETCH_BEERS_FAILED,
+  RESET_STATE
 } from './actionTypes'
 
 // Set up ROOT_URL API
@@ -14,6 +15,7 @@ const initialState = {
   beersList: [],
   beerDetails: {},
   isLoading: true,
+  isError: false,
   errorMessage: ''
 }
 
@@ -38,8 +40,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         errorMessage: action.payload,
-        isLoading: true
+        isLoading: false,
+        isError: true
       }
+    
+    case RESET_STATE:
+      return initialState
 
     default:
       return state
@@ -48,6 +54,15 @@ export default (state = initialState, action) => {
 }
 
 // Actions
+
+// Reset state
+export const resetState = () => {
+  return dispatch => {
+    dispatch({
+      type: RESET_STATE
+    })
+  }
+}
 
 // Get All Beers
 export const fetchBeers = () => {

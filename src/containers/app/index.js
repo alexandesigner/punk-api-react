@@ -8,8 +8,8 @@ import BeerDetails from '../beers/details';
 const App = () => (
   <main>
     <Route exact path="/" component={Home} />
-    <Route exact path="/cervejas" component={BeersList} />
-    <Route exact path="/cervejas/:id" component={BeerDetails} />
+    <Route exact path="/beers" component={BeersList} />
+    <Route exact path="/beers/:id" component={BeerDetails} />
   </main>
 );
 

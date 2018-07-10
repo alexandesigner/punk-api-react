@@ -15,10 +15,10 @@ const Figure = styled.figure`
   margin: -50px 0 0 0;
 `;
 
-const Title = styled.h1`
-  margin: 0;
-  font-size: 1.4em;
-`;
+// const Title = styled.h1`
+//   margin: 0;
+//   font-size: 1.4em;
+// `;
 
 const Button = styled.div`
   background: #E15D29;
@@ -37,11 +37,11 @@ const Button = styled.div`
 export default () => (
   <Container>
     <Figure>
-      <img src="logo.png" width="280" alt="Logo Fractal Tecnologia" />
+      {/* <img src="logo.png" width="280" alt="Logo Fractal Tecnologia" /> */}
     </Figure>
-    <Title>Teste Front-end</Title>
+    {/* <Title>Front-end Test</Title> */}
     <Button>
-      <Link to="/cervejas">Acessar o teste</Link>
+      <Link to="/beers">Access to test</Link>
     </Button>
   </Container>
 );

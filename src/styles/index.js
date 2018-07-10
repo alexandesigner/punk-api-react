@@ -1,16 +1,10 @@
 import { injectGlobal } from 'styled-components';
 
 injectGlobal`
+  @import url('https://fonts.googleapis.com/css?family=Concert+One');
   * {
     outline: none;
     box-sizing: border-box;
-  }
-  @font-face {
-    font-family: 'Miso';
-    src: url('fonts/Miso-bold.woff') format('woff2'),
-        url('fonts/Miso-bold.woff2') format('woff');
-    font-weight: bold;
-    font-style: italic;
   }
   body {
     padding: 0;

@@ -6,7 +6,14 @@ import {
   fetchBeers
 } from '../../modules/beers';
 
+import Toolbar from '../../components/toolbar';
+
 // Styles
+const Container = styled.div`
+  height: 100%;
+  margin: 0;
+`;
+
 const Beers = styled.div`
   display: flex;
   flex-direction: column;
@@ -20,23 +27,59 @@ const Item = styled.div`
   border-bottom: 1px solid #e5e5e5;
   transition: background 0.2s ease-in-out;
   cursor: pointer;
+  position: relative;
+  &:before {
+    position: absolute;
+    right: 25px;
+    font-size: 0.9em;
+    content: "see details";
+    top: 52px;
+    color: #666;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    opacity: 0;
+    font-family: 'Concert One', cursive;
+  }
   &:hover {
-    background: #f1f1f1;
+    background: #f9f9f9;
+    &:before {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 520px) {
+    &:hover {
+      &:before {
+        opacity: 0;
+      }
+    }
   }
 `;
 
 const Name = styled.h2`
-  font-family: 'Miso';
-  font-size: 1.8em;
+  font-family: 'Concert One', cursive;
+  font-size: 1.6em;
   margin: 5px 0;
+  color: #E15D29;
+  @media (max-width: 520px) {
+    font-size: 1.4em;
+  }
 `;
 
 const Tag = styled.span`
-  font-size: 1.2em;
+  font-size: 1em;
+  color: #666;
+`;
+
+const Alert = styled.div`
+  background: rgba(255, 4, 4, 0.68);
+  color: #fff;
+  padding: 15px 25px;
 `;
 
 const Loading = styled.div`
-  font-size: 2em;
+  font-size: 1.4em;
+  margin: 15px 25px;
 `;
 
 // Create a class to BeersList Component
@@ -46,13 +89,21 @@ class BeersList extends Component {
     this.props.fetchBeers();
   }
   selectedBeer(beer) {
-    this.props.history.push(`/cervejas/${beer.id}`)
+    // Selected beer go to details
+    this.props.history.push(`/beers/${beer.id}`)
   }
   render() {
     const isLoading = this.props.isLoading
+    const isError = this.props.isError
     return (
-      <div>
-        {isLoading ? (<Loading>Carregando...</Loading>) : (<Beers>
+      <Container>
+        <Toolbar 
+          title="List of beers" 
+          history={this.props.history} 
+          isDetails={false} 
+        />
+        {isError ? <Alert>{this.props.errorMessage}</Alert> : ''}
+        {isLoading ? (<Loading>Loading...</Loading>) : (<Beers>
           {this.props.beersList.map(beer => {
             const { id, name, tagline, } = beer;
             return (
@@ -63,7 +114,7 @@ class BeersList extends Component {
             );
           })}
         </Beers>)}
-      </div>
+      </Container>
     );
   }
 }
@@ -71,6 +122,7 @@ class BeersList extends Component {
 const mapStateToProps = ({ beers }) => ({
   beersList: beers.beersList,
   isLoading: beers.isLoading,
+  isError: beers.isError,
   errorMessage: beers.errorMessage
 });
 
