@@ -8,52 +8,12 @@ import {
 } from '../../modules/beers';
 
 import Toolbar from '../../components/toolbar';
+import Beer from '../../components/beer';
 
 // Styles
 const Container = styled.div`
   height: 100%;
   margin: 0;
-`;
-
-const Beer = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 20px;
-  padding: 20px;
-  @media (max-width: 520px) {
-    flex-direction: column;
-    justify-content: center;
-  }
-`;
-
-const Name = styled.h2`
-  font-size: 2.2em;
-  font-family: 'Concert One', cursive;
-  margin: 5px 0;
-  color: #E15D29;
-`;
-
-const Tag = styled.span`
-  font-size: 1em;
-  color: #666;
-`;
-
-const Description = styled.p`
-  font-size: 1em;
-`;
-
-const Image = styled.figure`
-  margin: 0;
-`;
-
-const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 50px;
-  @media (max-width: 520px) {
-    margin-left: 0;
-    text-align: center;
-  }
 `;
 
 const Alert = styled.div`
@@ -91,16 +51,14 @@ class BeerDetails extends Component {
           isDetails={true} 
         />
         {isError ? <Alert>{this.props.errorMessage}</Alert> : ''}
-        {isLoading ? (<Loading>Loading...</Loading>) : (<Beer>
-          <Image>
-            <img src={beer.image_url} alt="" width="120" />
-          </Image>
-          <Info>
-            <Name>{beer.name}</Name>
-            <Tag>{beer.tagline}</Tag>
-            <Description>{beer.description}</Description>
-          </Info>
-        </Beer>)}
+        {isLoading ? (<Loading>Loading...</Loading>) : (
+          <Beer 
+            name={beer.name} 
+            image_url={beer.image_url} 
+            tagline={beer.tagline}
+            description={beer.description}
+          />
+        )}
       </Container>
     );
   }

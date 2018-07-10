@@ -14,7 +14,7 @@ const Container = styled.div`
   margin: 0;
 `;
 
-const Beers = styled.div`
+const List = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -103,7 +103,7 @@ class BeersList extends Component {
           isDetails={false} 
         />
         {isError ? <Alert>{this.props.errorMessage}</Alert> : ''}
-        {isLoading ? (<Loading>Loading...</Loading>) : (<Beers>
+        {isLoading ? (<Loading>Loading...</Loading>) : (<List>
           {this.props.beersList.map(beer => {
             const { id, name, tagline, } = beer;
             return (
@@ -113,7 +113,7 @@ class BeersList extends Component {
               </Item>
             );
           })}
-        </Beers>)}
+        </List>)}
       </Container>
     );
   }
