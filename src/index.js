@@ -5,7 +5,8 @@ import { ConnectedRouter } from 'connected-react-router';
 import store, { history } from './store';
 import App from './containers/app';
 
-import './index.css';
+// Import injected global styled-components
+import './styles';
 
 render(
   <Provider store={store}>
