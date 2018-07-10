@@ -2,6 +2,33 @@
 
 > Here you will find details for using this repository
 
+## How to run this project?
+
+First of all you need to clone the design to your machine ``git clone https://github.com/alexandesigner/fractal-frontend.git``
+
+#### Install
+```bash
+$ npm install or yarn
+```
+
+#### Running
+```bash
+$ npm start or yarn start
+```
+
+#### Build
+```bash
+$ npm run build or yarn build
+```
+
+#### Tests
+```bash
+$ npm run test or yarn test
+```
+
+---
+
+
 <details>
   <summary>Create react app documentation</summary>
 
