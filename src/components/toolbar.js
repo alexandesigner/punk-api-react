@@ -48,9 +48,13 @@ const Toolbar = props => (
     </Title>
     {props.isDetails ? (
       <Button to="/beers">
-        back
+        back to list
       </Button>
-    ) : ('')}
+    ) : (
+      <Button to="/">
+        back to home
+      </Button>
+    )}
   </Header>
 )
 

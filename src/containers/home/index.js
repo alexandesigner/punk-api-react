@@ -45,18 +45,15 @@ const Title = styled.h1`
   font-family: 'Concert One', cursive;
 `
 
-const Button = styled.div`
+const Button = styled(Link)`
   background: #E15D29;
   color: #fff;
   margin-top: 20px;
   border-radius: 4px;
-  a {
-    padding: 10px 20px;
-    display: block;
-    text-decoration: none;
-    color: #fff;
-    text-decoration: uppercase;
-  }
+  padding: 10px 20px;
+  display: block;
+  text-decoration: none;
+  text-decoration: uppercase;
 `
 
 const Home = () => (
@@ -72,10 +69,8 @@ const Home = () => (
       <Title>
         Front-end Test
       </Title>
-      <Button>
-        <Link to="/beers">
-          Access to list of beers
-        </Link>
+      <Button to="/beers">
+        Access to list of beers
       </Button>
     </Content>
   </Container>
