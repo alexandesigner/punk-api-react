@@ -86,7 +86,7 @@ const Loading = styled.div`
 
 // Create a class to BeersList Component
 class BeersList extends Component {
-  UNSAFE_componentWillMount () {
+  componentDidMount () {
     // Fetch all beers
     this.props.fetchBeers()
   }
@@ -137,16 +137,14 @@ class BeersList extends Component {
 }
 
 BeersList.propTypes = {
-  fetchBeers: PropTypes.function,
+  fetchBeers: PropTypes.func,
   history: PropTypes.shape({
-    push: PropTypes.string
+    push: PropTypes.func
   }),
   isLoading: PropTypes.bool,
   isError: PropTypes.bool,
   errorMessage: PropTypes.string,
-  beersList: PropTypes.arrayOf({
-    map: PropTypes.array
-  })
+  beersList: PropTypes.array
 }
 
 const mapStateToProps = ({ beers }) => ({

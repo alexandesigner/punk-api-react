@@ -31,7 +31,7 @@ const Loading = styled.div`
 
 // Create a class to BeerDetails Component
 class BeerDetails extends Component {
-  UNSAFE_componentWillMount () {
+  componentDidMount () {
     // Get the params id
     const beerId = this.props.match.params.id
     // Pass id to fetch beer details in API
@@ -76,19 +76,16 @@ class BeerDetails extends Component {
 }
 
 BeerDetails.propTypes = {
-  fetchBeerDetails: PropTypes.function,
-  resetState: PropTypes.function,
-  match: PropTypes.arrayOf({
-    params: PropTypes.arrayOf({
-      id: PropTypes.string
-    })
-  }),
+  fetchBeerDetails: PropTypes.func,
+  resetState: PropTypes.func,
+  match: PropTypes.object,
   isLoading: PropTypes.bool,
   isError: PropTypes.bool,
   errorMessage: PropTypes.string,
-  beerDetails: PropTypes.arrayOf({
-    map: PropTypes.array
-  })
+  beerDetails:  PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object
+  ])
 }
 
 const mapStateToProps = ({ beers }) => ({
