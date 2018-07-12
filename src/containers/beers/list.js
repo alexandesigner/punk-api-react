@@ -1,23 +1,25 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import styled from 'styled-components';
+/* eslint-disable no-unused-vars */
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import styled from 'styled-components'
 import {
   fetchBeers
-} from '../../modules/beers';
+} from '../../modules/beers'
 
-import Toolbar from '../../components/toolbar';
+import Toolbar from '../../components/toolbar'
 
 // Styles
 const Container = styled.div`
   height: 100%;
   margin: 0;
-`;
+`
 
 const List = styled.div`
   display: flex;
   flex-direction: column;
-`;
+`
 
 const Item = styled.div`
   display: flex;
@@ -54,7 +56,7 @@ const Item = styled.div`
       }
     }
   }
-`;
+`
 
 const Name = styled.h2`
   font-family: 'Concert One', cursive;
@@ -64,59 +66,87 @@ const Name = styled.h2`
   @media (max-width: 520px) {
     font-size: 1.4em;
   }
-`;
+`
 
 const Tag = styled.span`
   font-size: 1em;
   color: #666;
-`;
+`
 
 const Alert = styled.div`
   background: rgba(255, 4, 4, 0.68);
   color: #fff;
   padding: 15px 25px;
-`;
+`
 
 const Loading = styled.div`
   font-size: 1.4em;
   margin: 15px 25px;
-`;
+`
 
 // Create a class to BeersList Component
 class BeersList extends Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount () {
     // Fetch all beers
-    this.props.fetchBeers();
+    this.props.fetchBeers()
   }
-  selectedBeer(beer) {
+
+  selectedBeer (beer) {
     // Selected beer go to details
     this.props.history.push(`/beers/${beer.id}`)
   }
-  render() {
+
+  render () {
     const isLoading = this.props.isLoading
     const isError = this.props.isError
     return (
       <Container>
-        <Toolbar 
-          title="List of beers" 
-          history={this.props.history} 
-          isDetails={false} 
+        <Toolbar
+          title="List of beers"
+          isDetails={false}
         />
-        {isError ? <Alert>{this.props.errorMessage}</Alert> : ''}
-        {isLoading ? (<Loading>Loading...</Loading>) : (<List>
-          {this.props.beersList.map(beer => {
-            const { id, name, tagline, } = beer;
-            return (
-              <Item onClick={() => this.selectedBeer(beer)} key={id}>
-                <Name>{name}</Name>
-                <Tag>{tagline}</Tag>
-              </Item>
-            );
-          })}
-        </List>)}
+        {isError ? (
+          <Alert>
+            {this.props.errorMessage}
+          </Alert>
+        ) : ''}
+        {isLoading ? (
+          <Loading>
+            Loading...
+          </Loading>
+        ) : (
+          <List>
+            {this.props.beersList.map((beer) => {
+              const { id, name, tagline } = beer
+              return (
+                <Item onClick={() => this.selectedBeer(beer)} key={id}>
+                  <Name>
+                    {name}
+                  </Name>
+                  <Tag>
+                    {tagline}
+                  </Tag>
+                </Item>
+              )
+            })}
+          </List>
+        )}
       </Container>
-    );
+    )
   }
+}
+
+BeersList.propTypes = {
+  fetchBeers: PropTypes.function,
+  history: PropTypes.shape({
+    push: PropTypes.string
+  }),
+  isLoading: PropTypes.bool,
+  isError: PropTypes.bool,
+  errorMessage: PropTypes.string,
+  beersList: PropTypes.arrayOf({
+    map: PropTypes.array
+  })
 }
 
 const mapStateToProps = ({ beers }) => ({
@@ -124,13 +154,13 @@ const mapStateToProps = ({ beers }) => ({
   isLoading: beers.isLoading,
   isError: beers.isError,
   errorMessage: beers.errorMessage
-});
+})
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   fetchBeers
-}, dispatch);
+}, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(BeersList);
+)(BeersList)

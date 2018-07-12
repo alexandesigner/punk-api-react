@@ -1,4 +1,5 @@
-import { injectGlobal } from 'styled-components';
+/* eslint no-unused-expressions: ["error", { "allowTaggedTemplates": true }] */
+import { injectGlobal } from 'styled-components'
 
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Concert+One');

@@ -1,12 +1,13 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
-import store, { history } from './store';
-import App from './containers/app';
+/* eslint-disable no-unused-vars */
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'connected-react-router'
+import store, { history } from './store'
+import App from './containers/app'
 
 // Import injected global styled-components
-import './styles';
+import './styles'
 
 render(
   <Provider store={store}>
@@ -17,4 +18,4 @@ render(
     </ConnectedRouter>
   </Provider>,
   document.querySelector('#app')
-);
+)

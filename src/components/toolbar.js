@@ -1,5 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+/* eslint-disable no-unused-vars */
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 const Header = styled.header`
   display: flex;
@@ -7,7 +10,7 @@ const Header = styled.header`
   align-items: center;
   padding: 10px;
   background: #f1f1f1;
-`;
+`
 
 const Title = styled.h1`
   font-size: 2.4em;
@@ -16,9 +19,9 @@ const Title = styled.h1`
   @media (max-width: 520px) {
     font-size: 1.8em;
   }
-`;
+`
 
-const Button = styled.button`
+const Button = styled(Link)`
   font-size: 1em;
   color: #E15D29;
   background: none;
@@ -30,18 +33,30 @@ const Button = styled.button`
   cursor: pointer;
   font-family: 'Concert One', cursive;
   transition: all 0.2s ease-in-out;
+  text-decoration: none;
   &:hover {
     background: transparent;
     border-color: #000;
     color: #000;
   }
-`;
+`
 
 const Toolbar = props => (
   <Header>
-    <Title>{props.title}</Title>
-    {props.isDetails ? (<Button onClick={() => props.history.goBack()}>back</Button>) : ('')}
+    <Title>
+      {props.title}
+    </Title>
+    {props.isDetails ? (
+      <Button to="/beers">
+        back
+      </Button>
+    ) : ('')}
   </Header>
-);
+)
 
-export default Toolbar;
+Toolbar.propTypes = {
+  title: PropTypes.string,
+  isDetails: PropTypes.bool
+}
+
+export default Toolbar

@@ -1,5 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+/* eslint-disable no-unused-vars */
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const Item = styled.div`
   display: flex;
@@ -10,27 +12,27 @@ const Item = styled.div`
     flex-direction: column;
     justify-content: center;
   }
-`;
+`
 
 const Name = styled.h2`
   font-size: 2.2em;
   font-family: 'Concert One', cursive;
   margin: 5px 0;
   color: #E15D29;
-`;
+`
 
 const Tag = styled.span`
   font-size: 1em;
   color: #666;
-`;
+`
 
 const Description = styled.p`
   font-size: 1em;
-`;
+`
 
 const Image = styled.figure`
   margin: 0;
-`;
+`
 
 const Info = styled.div`
   display: flex;
@@ -40,19 +42,36 @@ const Info = styled.div`
     margin-left: 0;
     text-align: center;
   }
-`;
+`
 
 const Beer = props => (
   <Item>
     <Image>
-      <img src={props.image_url} alt={props.name} width="120" />
+      <img 
+        src={props.image_url} 
+        alt={props.name} 
+        width="120" 
+      />
     </Image>
     <Info>
-      <Name>{props.name}</Name>
-      <Tag>{props.tagline}</Tag>
-      <Description>{props.description}</Description>
+      <Name>
+        {props.name}
+      </Name>
+      <Tag>
+        {props.tagline}
+      </Tag>
+      <Description>
+        {props.description}
+      </Description>
     </Info>
   </Item>
-);
+)
 
-export default Beer;
+Beer.propTypes = {
+  image_url: PropTypes.string,
+  name: PropTypes.string,
+  tagline: PropTypes.string,
+  description: PropTypes.string
+}
+
+export default Beer

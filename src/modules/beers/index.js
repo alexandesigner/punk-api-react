@@ -1,5 +1,4 @@
-
-import axios from "axios"
+import axios from 'axios'
 import {
   FETCH_BEERS,
   FETCH_BEER_DETAILS,
@@ -8,7 +7,7 @@ import {
 } from './actionTypes'
 
 // Set up ROOT_URL API
-const ROOT_URL = "https://api.punkapi.com/v2/";
+const ROOT_URL = 'https://api.punkapi.com/v2/'
 
 // Create a state in store
 const initialState = {
@@ -43,53 +42,44 @@ export default (state = initialState, action) => {
         isLoading: false,
         isError: true
       }
-    
+
     case RESET_STATE:
       return initialState
 
     default:
       return state
   }
-
 }
 
-// Actions
-
 // Reset state
-export const resetState = () => {
-  return dispatch => {
-    dispatch({
-      type: RESET_STATE
-    })
-  }
+export const resetState = () => (dispatch) => {
+  dispatch({
+    type: RESET_STATE
+  })
 }
 
 // Get All Beers
-export const fetchBeers = () => {
-  return dispatch => {
-    axios.get(`${ROOT_URL}beers`)
-      .then(result => dispatch({
-        type: FETCH_BEERS,
-        payload: result
-       }))
-      .catch(error => dispatch({
-        type: FETCH_BEERS_FAILED, 
-        payload: error.message
-      }))
-  }
+export const fetchBeers = () => (dispatch) => {
+  axios.get(`${ROOT_URL}beers`)
+    .then(result => dispatch({
+      type: FETCH_BEERS,
+      payload: result
+    }))
+    .catch(error => dispatch({
+      type: FETCH_BEERS_FAILED,
+      payload: error.message
+    }))
 }
 
 // Get Beer Details
-export const fetchBeerDetails = (id) => {
-  return dispatch => {
-    axios.get(`${ROOT_URL}beers/${id}`)
-      .then(result => dispatch({
-        type: FETCH_BEER_DETAILS,
-        payload: result.data
-       }))
-      .catch(error => dispatch({
-        type: FETCH_BEERS_FAILED, 
-        payload: error.message
-      }))
-  }
+export const fetchBeerDetails = id => (dispatch) => {
+  axios.get(`${ROOT_URL}beers/${id}`)
+    .then(result => dispatch({
+      type: FETCH_BEER_DETAILS,
+      payload: result.data
+    }))
+    .catch(error => dispatch({
+      type: FETCH_BEERS_FAILED,
+      payload: error.message
+    }))
 }

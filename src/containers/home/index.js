@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 const Container = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const Container = styled.div`
   @media (max-width: 520px) {
     flex-direction: column;
   }
-`;
+`
 
 const Figure = styled.figure`
   margin: 0;
@@ -24,7 +24,7 @@ const Figure = styled.figure`
   @media (max-width: 520px) {
     width: 100%;
   }
-`;
+`
 
 const Content = styled.div`
   background: #f1f1f1;
@@ -43,7 +43,7 @@ const Title = styled.h1`
   margin: 0;
   font-size: 1.4em;
   font-family: 'Concert One', cursive;
-`;
+`
 
 const Button = styled.div`
   background: #E15D29;
@@ -57,18 +57,28 @@ const Button = styled.div`
     color: #fff;
     text-decoration: uppercase;
   }
-`;
+`
 
-export default () => (
+const Home = () => (
   <Container>
     <Figure>
-      <img src="logo.png" width="280" alt="Logo Fractal Tecnologia" />
+      <img 
+        src="logo.png" 
+        width="280" 
+        alt="Logo Fractal Tecnologia" 
+      />
     </Figure>
     <Content>
-      <Title>Front-end Test</Title>
+      <Title>
+        Front-end Test
+      </Title>
       <Button>
-        <Link to="/beers">Access to list of beers</Link>
+        <Link to="/beers">
+          Access to list of beers
+        </Link>
       </Button>
     </Content>
   </Container>
-);
+)
+
+export default Home

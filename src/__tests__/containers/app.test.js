@@ -1,5 +1,6 @@
-import React from 'react';
-import App from '../../containers/App';
+/* eslint-disable no-undef */
+import React from 'react'
+import App from '../../containers/App'
 
 describe('App', () => {
   it('renders without crashing', () => {
