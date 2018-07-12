@@ -26,7 +26,7 @@ $ npm run build or yarn build
 $ npm run test or yarn test
 ```
 
-#### Tests
+#### Lint
 ```bash
 $ npm run lint or yarn lint
 ```
