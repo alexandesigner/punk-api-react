@@ -1,6 +1,6 @@
 {
-  "short_name": "Fractal - Front-end Test",
-  "name": "Fractal - Front-end Test",
+  "short_name": "Punk API React",
+  "name": "Punk API React",
   "icons": [
     {
       "src": "favicon.png",
@@ -10,6 +10,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#E15D29",
+  "theme_color": "#2e6aff",
   "background_color": "#ffffff"
 }

@@ -1,10 +1,10 @@
-# Fractal Front-end test
+# Punk API React
 
 > Here you will find details for using this repository
 
 ## How to run this project?
 
-First of all you need to clone the design to your machine ``git clone https://github.com/alexandesigner/fractal-frontend.git``
+First of all you need to clone the design to your machine ``git clone https://github.com/alexandesigner/punk-api-react.git``
 
 #### Install
 ```bash

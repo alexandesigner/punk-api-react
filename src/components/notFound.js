@@ -22,7 +22,7 @@ const Description = styled.p`
 `
 
 const Button = styled(Link)`
-  background: #E15D29;
+  background: #2e6aff;
   color: #fff;
   margin-top: 20px;
   border-radius: 4px;
@@ -34,7 +34,7 @@ const Button = styled(Link)`
 
 const NotFound = () => (
   <Container>
-    <Title>404 page not found</Title>
+    <Title>Page not found</Title>
     <Description>We are sorry but the page you are looking for does not exist.</Description>
     <Button to="/">Back to home</Button>
   </Container>

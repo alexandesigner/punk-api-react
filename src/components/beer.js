@@ -18,7 +18,7 @@ const Name = styled.h2`
   font-size: 2.2em;
   font-family: 'Concert One', cursive;
   margin: 5px 0;
-  color: #E15D29;
+  color: #2e6aff;
 `
 
 const Tag = styled.span`

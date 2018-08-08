@@ -46,7 +46,7 @@ const Title = styled.h1`
 `
 
 const Button = styled(Link)`
-  background: #E15D29;
+  background: #2e6aff;
   color: #fff;
   margin-top: 20px;
   border-radius: 4px;
@@ -62,12 +62,12 @@ const Home = () => (
       <img 
         src="logo.png" 
         width="280" 
-        alt="Logo Fractal Tecnologia" 
+        alt="Logo Punk API React" 
       />
     </Figure>
     <Content>
       <Title>
-        Front-end Test
+        Punk API React
       </Title>
       <Button to="/beers">
         Access to list of beers

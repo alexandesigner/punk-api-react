@@ -62,7 +62,7 @@ const Name = styled.h2`
   font-family: 'Concert One', cursive;
   font-size: 1.6em;
   margin: 5px 0;
-  color: #E15D29;
+  color: #2e6aff;
   @media (max-width: 520px) {
     font-size: 1.4em;
   }

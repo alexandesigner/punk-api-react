@@ -23,9 +23,9 @@ const Title = styled.h1`
 
 const Button = styled(Link)`
   font-size: 1em;
-  color: #E15D29;
+  color: #2e6aff;
   background: none;
-  border: 1px solid #E15D29;
+  border: 1px solid #2e6aff;
   padding: 5px 12px;
   margin: 0 15px;
   border-radius: 4px;
